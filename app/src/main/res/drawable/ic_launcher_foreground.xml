@@ -1,0 +1,11 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Single centered glyph within the 72dp safe zone — a "focus dot".
+         Placeholder mark; the real brand icon lands in the Phase 6 polish pass. -->
+    <path
+        android:fillColor="#8FE3CE"
+        android:pathData="M36,54 a18,18 0 1,0 36,0 a18,18 0 1,0 -36,0 Z" />
+</vector>

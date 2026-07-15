@@ -1,0 +1,8 @@
+# Normalize line endings. Wrapper scripts are sensitive: gradlew must stay LF, the
+# Windows batch launcher must stay CRLF.
+* text=auto eol=lf
+*.bat text eol=crlf
+gradlew text eol=lf
+*.jar binary
+*.png binary
+*.webp binary

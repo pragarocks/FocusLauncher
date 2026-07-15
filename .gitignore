@@ -1,0 +1,25 @@
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Android Studio / IntelliJ
+*.iml
+.idea/
+.DS_Store
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Local, machine-specific config (Android Studio regenerates this)
+local.properties
+
+# Build outputs
+*.apk
+*.aab
+*.ap_
+*.dex
+
+# Signing material — never commit
+*.jks
+*.keystore

@@ -1,0 +1,5 @@
+<resources>
+    <!-- Compose owns all in-app colors via MaterialTheme; this window theme only styles
+         the pre-Compose window (no action bar, wallpaper support comes in Phase 4). -->
+    <style name="Theme.FocusLauncher" parent="android:Theme.Material.NoActionBar" />
+</resources>

@@ -1,0 +1,4 @@
+<resources>
+    <!-- Adaptive-icon background. Uses the plan's "Frosted Teal" bg (§7). -->
+    <color name="ic_launcher_background">#0E2F2A</color>
+</resources>
