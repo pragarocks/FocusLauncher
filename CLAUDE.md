@@ -2,9 +2,11 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Project status: plan only, no code yet
+## Project status: Phase 0 scaffolded
 
-This directory currently contains a **single design document** — [`FocusLauncher Plan.md`](FocusLauncher Plan.md) — and no source code. The Android project has **not been scaffolded**. Phase 0 (see below) has not been done. Treat the plan as the authoritative spec and build strictly phase by phase, in order; later phases assume the earlier Room entities and the icon-resolution chain already exist.
+**Phase 0 is done and pushed** — the Compose/Hilt project skeleton exists (single Activity + NavHost with empty Home/Drawer/Themes/Settings; launches to an empty Home). Next up is **Phase 1** (become a real launcher). [`FocusLauncher Plan.md`](FocusLauncher Plan.md) is the authoritative spec; build strictly phase by phase, in order — later phases assume the earlier Room entities and the icon-resolution chain already exist.
+
+**No Android toolchain on this machine** (no JDK, Gradle, Android SDK, or Android Studio — it's a Python-focused box). The scaffold was authored as source files but **cannot be compiled or run here**; build/verify happens in Android Studio (which brings its own JBR + SDK). Don't try to run `./gradlew` or `adb` locally — they aren't installed. The Gradle **wrapper jar** is intentionally absent (network was blocked at authoring time); Android Studio regenerates it on first sync (see README).
 
 Before starting implementation-heavy work, load the Android skills: `android-dev` (baseline router) plus the specific ones per task — `compose`, `android-data-layer` (Room), `datastore`, `koin`/Hilt, `android-retrofit`, `kotlin-flows`, `kotlin-coroutines`, `coil-compose`, `android-testing`, `android-ux`.
 
@@ -59,9 +61,9 @@ DAOs **expose Flows** so Compose recomposes live as background icon generation f
 - **No public/cross-user leaderboard** (plan §10). Build self-comparison insights stored locally in Room only; a ranked board contradicts the product and is a dark pattern. Every surfaced metric must pass: *does seeing this help the user act, or just make them feel judged?*
 - Adaptive-icon compositing has device quirks; default-launcher UX differs across OEMs (Samsung/Xiaomi/Pixel) — test on more than one skin.
 
-## Commands (apply once Phase 0 scaffolds the Gradle project — none work yet)
+## Commands (run in Android Studio or a box with the Android toolchain — not this machine)
 
-This is a standard Gradle Android project once created. On Windows use the `gradlew.bat` wrapper (the Bash tool can use `./gradlew`):
+Standard Gradle Android project. First open in Android Studio to generate the wrapper jar. On Windows use the `gradlew.bat` wrapper (the Bash tool can use `./gradlew`):
 
 - Build debug APK: `./gradlew assembleDebug`
 - Install on connected device/emulator: `./gradlew installDebug`
@@ -70,6 +72,6 @@ This is a standard Gradle Android project once created. On Windows use the `grad
 - Lint: `./gradlew lint`
 - Logcat while debugging the launcher: `adb logcat`
 
-## Repository / progress tracking — needs setup before committing
+## Repository / progress tracking
 
-This folder is **not its own git repo.** `git rev-parse --show-toplevel` resolves to `C:/Users/909494` (the home directory) and `origin` points to `second-you-life-simulator.git` — an unrelated project. **Do not commit FocusLauncher work against that remote.** The intended tracking remote is `https://github.com/pragarocks/FocusLauncher`. Before any commit, initialize a dedicated repo rooted at this `Launcher` folder (or a fresh subfolder), add a proper Android `.gitignore` (`build/`, `.gradle/`, `local.properties`, `*.apk`), and set `origin` to the FocusLauncher URL — confirm the git setup with the user first.
+This `Launcher` folder is now its own git repo (`git init` here), separate from the surrounding home-directory repo. `origin` is `https://github.com/pragarocks/FocusLauncher.git` and `main` tracks it — the Phase 0 scaffold is pushed. Commit phase by phase. **Do not** confuse this with the home-directory repo that points at `second-you-life-simulator.git`. Note this folder lives under a **OneDrive** path, so avoid letting OneDrive sync mid-build corrupt `.gradle/`/`build/` (both are gitignored).
